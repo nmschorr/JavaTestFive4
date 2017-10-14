@@ -53,7 +53,7 @@ public class JavaTestFive {
 		} catch(Exception e) { e.printStackTrace();
 		}
 	}
-  
+    
 		// This method just plays around with converting JSON objects: use debugger to see them
 		// List<Object> myArrayList = new ArrayList<Object>();
 		// HashMap<String, String> map = new HashMap<String, String>();  // shows casting of Object to HashMap
