@@ -27,7 +27,6 @@ public class JavaTestFive {
 
 	static void readUrlData () throws Exception {
 		String builderLine;
-		//HttpURLConnection newUrlConn = null;
 		String locUrlString = "http://jsonplaceholder.typicode.com/albums";
 		System.out.println("\nRunning readUrlData");
 		HttpURLConnection newUrlConn = (HttpURLConnection) new URL(locUrlString).openConnection();
