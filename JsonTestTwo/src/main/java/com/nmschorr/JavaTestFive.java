@@ -31,13 +31,29 @@ public class JavaTestFive {
 		String builderLine;
 		System.out.println("\nRunning readUrlData");
 		String locUrlString = "http://jsonplaceholder.typicode.com/albums";
-		Reader bufReader = new BufferedReader(
-				new InputStreamReader(new URL(locUrlString).openStream()));	
+		HttpURLConnection newUrlConn = null;
+
+		URL urlObj = new URL(locUrlString);
+		newUrlConn = (HttpURLConnection) urlObj.openConnection();
+		newUrlConn.setRequestMethod("GET");
+		newUrlConn.setConnectTimeout(5000);
+		newUrlConn.setReadTimeout(5000);
+		newUrlConn.setRequestProperty("Accept", "application/json");
+		if (newUrlConn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+			System.err.println("Can't connect to the URL...");
+		}
+		System.out.println("Connected to the server...");
+
+		InputStream is = newUrlConn.getInputStream();
+		Reader bufReader = new BufferedReader(new InputStreamReader((is)));            
+
 		StringBuilder myStrBuilder = new StringBuilder();
 		while((builderLine = ((BufferedReader)bufReader).readLine()) != null) {
 			myStrBuilder.append(builderLine);
 		}
 		System.out.println("\\n" + myStrBuilder.toString());		
+		if(bufReader != null) bufReader.close();
+		if(newUrlConn != null) newUrlConn.disconnect();
 		out.println("\nDone with readUrlData ");
 	}
 
