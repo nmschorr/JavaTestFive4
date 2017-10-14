@@ -1,17 +1,15 @@
 /* JavaTestFive by Nancy Schorr, 2017
  Demonstrates use of apis to read a json formatted text file and store it as a JSON object for further manipulation.
  Also goes to url http://jsonplaceholder.typicode.com/albums and reads the data and store it in various objects.
+ Thanks to https://www.java2novice.com/restful-web-services/java-client-net-url/ for some ideas in this code.
  */
 package com.nmschorr;
-
 
 import static java.lang.System.out;
 import java.io.*;
 import java.net.*;
 import java.util.*;
 import org.json.*;
-
-
 
 public class JavaTestFive {
 	public static String scanFileContentsString = null;
@@ -29,13 +27,11 @@ public class JavaTestFive {
 
 	static void readUrlData () throws Exception {
 		String builderLine;
-		System.out.println("\nRunning readUrlData");
+		//HttpURLConnection newUrlConn = null;
 		String locUrlString = "http://jsonplaceholder.typicode.com/albums";
-		HttpURLConnection newUrlConn = null;
-		newUrlConn = (HttpURLConnection) new URL(locUrlString).openConnection();
+		System.out.println("\nRunning readUrlData");
+		HttpURLConnection newUrlConn = (HttpURLConnection) new URL(locUrlString).openConnection();
 		newUrlConn.setRequestMethod("GET");
-		newUrlConn.setConnectTimeout(6000);
-		newUrlConn.setReadTimeout(6000);
 		newUrlConn.setRequestProperty("Accept", "application/json");
 		if (newUrlConn.getResponseCode() != HttpURLConnection.HTTP_OK) {
 			System.err.println("Can't connect to Webserver!");
