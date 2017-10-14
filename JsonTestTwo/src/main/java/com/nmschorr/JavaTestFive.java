@@ -40,7 +40,7 @@ public class JavaTestFive {
 		if (newUrlConn.getResponseCode() != HttpURLConnection.HTTP_OK) {
 			System.err.println("Can't connect to Webserver!");
 		}
-		System.out.println("Connected to Webserver!");
+		else System.out.println("Connected to Webserver!");
 		InputStream is = newUrlConn.getInputStream();
 		Reader bufReader = new BufferedReader(new InputStreamReader((is)));            
 		StringBuilder myStrBuilder = new StringBuilder();
